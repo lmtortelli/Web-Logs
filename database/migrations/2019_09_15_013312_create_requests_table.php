@@ -16,6 +16,12 @@ class CreateRequestsTable extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('idLog');
+            $table->string('method');
+            $table->string('uri');
+            $table->string('url');
+            $table->string('size');
+            $table->json('queryString');
+            $table->json('headers');
             $table->timestamps();
             $table->foreign('idLog')->references('id')->on('logs');
         });
