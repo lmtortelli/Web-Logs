@@ -8,21 +8,21 @@ use App\Domain\File\FileReader;
 use App\Domain\File\JsonFileFormat;
 
 
-class InspiringCommand extends Command
+class Logs extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'inspiring {name=Artisan}';
+    protected $signature = 'logs {path}';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Display an inspiring quote';
+    protected $description = 'Load File log';
 
     /**
      * Execute the console command.
@@ -31,8 +31,15 @@ class InspiringCommand extends Command
      */
     public function handle()
     {
-        $a = new FileReader(new JsonFileFormat());
-        $this->info($a->parse('tes'));
+        // Create a File parser
+        $fileReader = new FileReader(new JsonFileFormat());
+        
+        // Get path of arguments
+        $filePath = $this->argument('path');
+
+        // Parse log's file on Json Format 
+        $this->info($fileReader->parse($filePath));
+        
     }
 
     /**
@@ -41,7 +48,7 @@ class InspiringCommand extends Command
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
-    public function schedule(Schedule $schedule)
+    public function schedule(Schedule $schedule): void
     {
         // $schedule->command(static::class)->everyMinute();
     }
