@@ -17,7 +17,7 @@ class CreateRoutesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('idLog');
             $table->string('id_service');
-            $table->string('host');
+            $table->string('hosts');
             $table->string('idRoute');
             $table->set('methods', ['GET','POST','PUT','DELETE','PATCH','OPTIONS','HEAD']);
             $table->string('paths');

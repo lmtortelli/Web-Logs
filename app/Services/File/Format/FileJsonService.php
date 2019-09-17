@@ -4,28 +4,31 @@ namespace App\Services\File\Format;
 
 use App\Services\File\Template\iFileService;
 
-use App\Controllers\LatenciesController;
-use App\Controllers\LogsController;
-use App\Controllers\RequestController;
-use App\Controllers\ResponsesController;
-use App\Controllers\RoutesController;
-use App\Controllers\ServicesController;
+use App\Controllers\ControllerProvider;
 
     class FileJsonService implements iFileService {
+        
+        private $headers = array(
+            //"route",
+            // "response" ,
+            // "latencies",
+            "service",
+            // "request" ,
+        );
 
-        // private $headers = array(
-        //     "client_ip" => new LogsController(),
-        //     "latencies" => new LatenciesController(),
-        //     "service" => new ServicesController(),
-        //     "route" => new RoutesController(),
-        //     "response" => new ResponsesController(),
-        //     "request" => new RequestController(),
-        // );
-
+        
 
         public function addToDatabase ($data) {
-            foreach($this->headers as $key => $value){
-                echo (var_dump($data[$key]));
+            $log = array(
+                "client_ip" => $data['client_ip'],
+                "authenticated_entity" => $data['authenticated_entity'],
+                "upstream_uri" => $data['upstream_uri']
+            );
+
+            $provider = new ControllerProvider();
+            $idLog = $provider->builderController('client_ip',NULL)->insert($log,NULL);
+            foreach($this->headers as $key){
+                $provider->builderController($key)->insert($data[$key], $idLog);
             }
             
         }
