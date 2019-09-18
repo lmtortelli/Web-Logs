@@ -22,7 +22,6 @@ class CreateRequestsTable extends Migration
             $table->string('size');
             $table->json('queryString');
             $table->json('headers');
-            $table->timestamps();
             $table->foreign('idLog')->references('id')->on('logs');
         });
     }

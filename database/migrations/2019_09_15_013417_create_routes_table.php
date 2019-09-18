@@ -14,20 +14,17 @@ class CreateRoutesTable extends Migration
     public function up()
     {
         Schema::create('routes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('idLog');
+            $table->string('id');
+            $table->primary('id');
             $table->string('id_service');
             $table->string('hosts');
-            $table->string('idRoute');
-            $table->set('methods', ['GET','POST','PUT','DELETE','PATCH','OPTIONS','HEAD']);
+            $table->string('methods');
             $table->string('paths');
             $table->boolean('preserve_host');
             $table->boolean('strip_path');
             $table->string('protocols');
             $table->smallInteger('regex_priority');
             $table->timestamps();
-            $table->foreign('idLog')->references('id')->on('logs');
-            $table->foreign('id_service')->references('id_service')->on('services');
         });
     }
 

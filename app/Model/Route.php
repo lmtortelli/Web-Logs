@@ -1,11 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Route extends Model
 {
+
+    protected $fillable = ['created_at'];
+
     public function log()
     {
         return $this->belongsTo('App\Log');

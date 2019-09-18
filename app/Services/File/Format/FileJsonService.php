@@ -9,11 +9,11 @@ use App\Controllers\ControllerProvider;
     class FileJsonService implements iFileService {
         
         private $headers = array(
-            //"route",
-            // "response" ,
-            // "latencies",
             "service",
-            // "request" ,
+            "response" ,
+            "latencies",
+            "request" ,
+            "route",
         );
 
         
@@ -21,8 +21,9 @@ use App\Controllers\ControllerProvider;
         public function addToDatabase ($data) {
             $log = array(
                 "client_ip" => $data['client_ip'],
-                "authenticated_entity" => $data['authenticated_entity'],
-                "upstream_uri" => $data['upstream_uri']
+                "authenticated_entity" => $data['authenticated_entity']['consumer_id']['uuid'],
+                "upstream_uri" => $data['upstream_uri'],
+                "started_at" => $data['started_at']
             );
 
             $provider = new ControllerProvider();

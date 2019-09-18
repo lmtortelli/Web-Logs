@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLatenciesTable extends Migration
+class CreateLogsRoutesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateLatenciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('latencies', function (Blueprint $table) {
+        Schema::create('logs_routes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('idLog');
-            $table->integer('proxy');
-            $table->integer('request');
-            $table->integer('kong');
+            $table->string('idRoute');
             $table->foreign('idLog')->references('id')->on('logs');
+            $table->foreign('idRoute')->references('id')->on('routes');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateLatenciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('latencies');
+        Schema::dropIfExists('logs_routes');
     }
 }

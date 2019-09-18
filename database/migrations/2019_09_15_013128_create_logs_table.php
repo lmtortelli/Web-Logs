@@ -15,9 +15,9 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->timestamp('started_at');
             $table->string('client_ip');
-            $table->json('authenticated_entity');
+            $table->string('authenticated_entity');
             $table->string('upstream_uri');
 
         });

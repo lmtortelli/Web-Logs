@@ -14,9 +14,8 @@ class CreateServicesTable extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('id_service');
-            $table->unsignedBigInteger('idLog');
+            $table->string('id');
+            $table->primary('id');
             $table->string('host');
             $table->string('name');
             $table->string('path');
@@ -27,7 +26,6 @@ class CreateServicesTable extends Migration
             $table->integer('write_timeout');
             $table->integer('retries');
             $table->timestamps();
-            $table->foreign('idLog')->references('id')->on('logs');
         });
     }
 

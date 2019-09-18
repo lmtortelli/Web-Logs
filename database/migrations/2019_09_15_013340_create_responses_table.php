@@ -19,8 +19,6 @@ class CreateResponsesTable extends Migration
             $table->string('status');
             $table->string('size');
             $table->json('headers');
-
-            $table->timestamps();
             $table->foreign('idLog')->references('id')->on('logs');
         });
     }
