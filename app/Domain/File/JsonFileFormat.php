@@ -5,6 +5,9 @@ namespace App\Domain\File;
 use App\Domain\File\iFileFormat;
 use App\Services\File\Format\FileJsonService;
 use App\Services\File\FileService;
+use App\Services\ServiceLogs;
+use App\Services\ServiceLatencie;
+use App\Services\ServiceLogRoutes;
 
     class JsonFileFormat implements iFileFormat {
         public function parse($pathFile) {
@@ -25,8 +28,14 @@ use App\Services\File\FileService;
                 $fileService->addToDatabase($json);
                 
             }
-            
-            return $pathFile . "Json Format";
+
+            $teste = new ServiceLogs();
+            $teste_2 = new ServiceLatencie();
+            $teste_3 = new ServiceLogRoutes();
+            echo ($teste->getCountByColumn('authenticated_entity'));
+            echo $teste_3->getCountByColumn('idRoute');
+            echo ($teste_2->getAverageLatencies());
+
         }
     }
 ?>

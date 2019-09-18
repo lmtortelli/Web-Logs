@@ -18,6 +18,7 @@ class RequestController implements iController {
         Request::insert($data);
     }
     public function delete($data) {}
+    public function getCountByColumn ($key) {}
     public function update($data) {}
 }
 

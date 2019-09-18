@@ -18,6 +18,7 @@ class ServicesController implements iController {
     }
     public function delete($data) {}
     public function update($data) {}
+    public function getCountByColumn ($key) {}
 }
 
 

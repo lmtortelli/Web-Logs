@@ -12,7 +12,16 @@ class LogsController implements iController {
         return DB::table('logs')->insertGetId($data);
     }
     public function delete($data) {}
+
     public function update($data) {}
+
+
+    public function getCountByColumn ($key) {
+        return DB::table('logs')
+            ->select(DB::raw($key.',count(*)'))
+            ->groupBy($key)
+            ->get();
+    }
 }
 
 
