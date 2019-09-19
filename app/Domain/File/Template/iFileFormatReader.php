@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\File;
+namespace App\Domain\File\Template;
 
-interface iFileFormat {
+interface iFileFormatReader {
 
         // Return array of objects
         public function parse($pathFile);

@@ -5,7 +5,7 @@ namespace App\Commands;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 use App\Domain\File\FileReader;
-use App\Domain\File\JsonFileFormat;
+use App\Domain\File\Format\JsonFileFormat;
 
 
 class Logs extends Command

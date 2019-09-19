@@ -2,12 +2,12 @@
 
 namespace App\Domain\File;
 
-use App\Domain\File\iFileFormat;
+use App\Domain\File\Template\iFileFormatReader;
 
     class FileReader {
         protected $fileFormat;
 
-        public function __construct(iFileFormat $fileFormat) {
+        public function __construct(iFileFormatReader $fileFormat) {
             $this->fileFormat = $fileFormat;
         }
 

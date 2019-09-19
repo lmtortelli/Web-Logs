@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Domain\File;
+namespace App\Domain\File\Format;
 
-use App\Domain\File\iFileFormat;
+use App\Domain\File\Template\iFileFormatReader;
 use App\Services\File\Format\FileJsonService;
 use App\Services\File\FileService;
-use App\Services\ServiceLogs;
-use App\Services\ServiceLatencie;
-use App\Services\ServiceLogRoutes;
 
-    class JsonFileFormat implements iFileFormat {
+    class JsonFileFormat implements iFileFormatReader {
         public function parse($pathFile) {
             $fileService = new FileService(new FileJsonService());
             
@@ -29,12 +26,7 @@ use App\Services\ServiceLogRoutes;
                 
             }
 
-            $teste = new ServiceLogs();
-            $teste_2 = new ServiceLatencie();
-            $teste_3 = new ServiceLogRoutes();
-            echo ($teste->getCountByColumn('authenticated_entity'));
-            echo $teste_3->getCountByColumn('idRoute');
-            echo ($teste_2->getAverageLatencies());
+           
 
         }
     }
