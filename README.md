@@ -101,11 +101,11 @@ On MySql create a local database named "web-logs". Change your credentials for a
 ## Commands
   Actually has two commands for usage in Web-logs application. The first command is responsible for populated database with data logs.
 
-  * php web-logs logs <PATH>
-  - <PATH> : Path of file .txt with data logs events. (FORMAT JSON)
+  * **php web-logs logs <PATH>**
+   <PATH> : Path of file .txt with data logs events. (FORMAT JSON)
 
-  * php web-logs report --console
-  - (--console): Is a optional parameters, case not require save .csv file for reports. This parameters show's the entire report in command-line.
+  * **php web-logs report --console**
+   (--console): Is a optional parameters, case not require save .csv file for reports. This parameters show's the entire report in command-line.
 
 ## Web-Logs
 
