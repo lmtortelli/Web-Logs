@@ -1,36 +1,119 @@
-<p align="center">
-    <img title="Laravel Zero" height="100" src="https://raw.githubusercontent.com/laravel-zero/docs/master/images/logo/laravel-zero-readme.png" />
-</p>
+# Web-Log/Laravel Zero
 
-<p align="center">
-  <a href="https://travis-ci.org/laravel-zero/framework"><img src="https://img.shields.io/travis/laravel-zero/framework/stable.svg" alt="Build Status"></img></a>
-  <a href="https://scrutinizer-ci.com/g/laravel-zero/framework"><img src="https://img.shields.io/scrutinizer/g/laravel-zero/framework.svg" alt="Quality Score"></img></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://poser.pugx.org/laravel-zero/framework/d/total.svg" alt="Total Downloads"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://poser.pugx.org/laravel-zero/framework/v/stable.svg" alt="Latest Stable Version"></a>
-  <a href="https://packagist.org/packages/laravel-zero/framework"><img src="https://poser.pugx.org/laravel-zero/framework/license.svg" alt="License"></a>
-</p>
+#### Web-logs project was development on micro-framework Laravel Zero. That provide a simple command for reading a json data on fomar show behind:
 
-<h4> <center>This is a <bold>community project</bold> and not an official Laravel one </center></h4>
+`{
+    "request": {
+        "method": "GET",
+        "uri": "/get",
+        "url": "http://httpbin.org:8000/get",
+        "size": "75",
+        "querystring": {},
+        "headers": {
+            "accept": "*/*",
+            "host": "httpbin.org",
+            "user-agent": "curl/7.37.1"
+        },
+    },
+    "upstream_uri": "/",
+    "response": {
+        "status": 200,
+        "size": "434",
+        "headers": {
+            "Content-Length": "197",
+            "via": "kong/0.3.0",
+            "Connection": "close",
+            "access-control-allow-credentials": "true",
+            "Content-Type": "application/json",
+            "server": "nginx",
+            "access-control-allow-origin": "*"
+        }
+    },
+    "authenticated_entity": {
+        "consumer_id": "80f74eef-31b8-45d5-c525-ae532297ea8e"
+    },
+    "route": {
+        "created_at": 1521555129,
+        "hosts": null,
+        "id": "75818c5f-202d-4b82-a553-6a46e7c9a19e",
+        "methods": ["GET","POST","PUT","DELETE","PATCH","OPTIONS","HEAD"],
+        "paths": [
+            "/example-path"
+        ],
+        "preserve_host": false,
+        "protocols": [
+            "http",
+            "https"
+        ],
+        "regex_priority": 0,
+        "service": {
+            "id": "0590139e-7481-466c-bcdf-929adcaaf804"
+        },
+        "strip_path": true,
+        "updated_at": 1521555129
+    },
+    "service": {
+        "connect_timeout": 60000,
+        "created_at": 1521554518,
+        "host": "example.com",
+        "id": "0590139e-7481-466c-bcdf-929adcaaf804",
+        "name": "myservice",
+        "path": "/",
+        "port": 80,
+        "protocol": "http",
+        "read_timeout": 60000,
+        "retries": 5,
+        "updated_at": 1521554518,
+        "write_timeout": 60000
+    },
+    "latencies": {
+        "proxy": 1430,
+        "kong": 9,
+        "request": 1921
+    },
+    "client_ip": "127.0.0.1",
+    "started_at": 1433209822425
+}´
 
-Laravel Zero was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is a micro-framework that provides an elegant starting point for your console application. It is an **unofficial** and customized version of Laravel optimized for building command-line applications.
+## Installation Guide:
 
-- Built on top of the [Laravel](https://laravel.com) components.
-- Optional installation of Laravel [Eloquent](https://laravel-zero.com/docs/database/), Laravel [Logging](https://laravel-zero.com/docs/logging/) and many others.
-- Supports interactive [menus](https://laravel-zero.com/docs/build-interactive-menus/) and [desktop notifications](https://laravel-zero.com/docs/send-desktop-notifications/) on Linux, Windows & MacOS.
-- Ships with a [Scheduler](https://laravel-zero.com/docs/task-scheduling/) and  a [Standalone Compiler](https://laravel-zero.com/docs/build-a-standalone-application/).
-- Integration with [Collision](https://github.com/nunomaduro/collision) - Beautiful error reporting
+### Requirements:
+* MySQL 5.7 >=
+* Laravel Zero (preference for latest version)
 
-------
+--
 
-## Documentation
+On MySql create a local database named "web-logs". Change your credentials for access database on file "config/database.php". Default is:
+
+`           'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'web-logs'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', ''),´
+
+## First Steps:
+  All commands are very simple for usage, After performing the installation guide, run the following commands to adjust the production environment.
+
+  * php web-logs migrate
+
+  This command will create the entire application database structure in mysql.
+
+## Commands
+  Actually has two commands for usage in Web-logs application. The first command is responsible for populated database with data logs.
+
+  * php web-logs logs <PATH>
+  - <PATH> : Path of file .txt with data logs events. (FORMAT JSON)
+
+  * php web-logs report --console
+  - (--console): Is a optional parameters, case not require save .csv file for reports. This parameters show's the entire report in command-line.
+
+## Web-Logs
+
+Development by Lucas M. Tortelli for study proposes.
+
+## Full Documentation of Laravel Zero
 
 For full documentation, visit [laravel-zero.com](https://laravel-zero.com/).
-
-## Support the development
-**Do you like this project? Support it by donating**
-
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
 
 ## License
 
